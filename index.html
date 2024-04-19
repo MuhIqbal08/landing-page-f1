@@ -1,0 +1,1186 @@
+index.html:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        *, html {
+            scroll-behavior: smooth;
+        }
+        .welcome-hero {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .welcome-content {
+            flex: 1;
+            padding-right: 20px; /* Jarak antara konten dan gambar */
+        }
+
+        .welcome-image {
+            width: 250px; /* Ukuran gambar disesuaikan dengan kebutuhan */
+        }
+        .card-schedule::-webkit-scrollbar {
+    display: none;
+}
+        @media screen and (max-width: 760px) {
+            .welcome-hero {
+            display: flex;
+            flex-direction: column;
+        }
+    .welcome-image {
+            width: 100%;
+            margin-top: 20px;
+            padding-left:20px;
+            padding-right: 20px;
+        }
+
+        .welcome-content {
+            flex: 1;
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+}
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff0100ff',
+                        secondary: '#ff00006e'
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body>
+<div class="flex flex-col">
+    <header class="bg-black">
+        <nav class="relative px-4 py-4 flex justify-between items-center">
+		<a class="text-3xl font-bold leading-none" href="#">
+			<h1 class="uppercase text-primary">MIFormula</h1>
+		</a>
+		<div class="lg:hidden">
+			<button class="navbar-burger flex items-center text-primary p-3">
+				<svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<title>Mobile menu</title>
+					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+				</svg>
+			</button>
+		</div>
+		<ul class="hidden lg:flex lg:justify-end lg:flex lg:items-center lg:w-auto lg:space-x-6">
+			<li><a class="text-sm text-white hover:text-primary focus:font-bold focus:text-primary" href="#">Home</a></li>
+			<li><a class="text-sm text-white hover:text-primary focus:font-bold focus:text-primary" href="#schedule">Schedule</a></li>
+			<li><a class="text-sm text-white hover:text-primary focus:font-bold focus:text-primary" href="#standings">Standings</a></li>
+		</ul>
+	</nav>
+	<div class="navbar-menu relative z-50 hidden">
+		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 border-r overflow-y-auto">
+			<div class="flex items-center mb-8">
+				<a class="mr-auto text-3xl font-bold leading-none" href="#">	
+                    <h1 class="text-primary uppercase text-lg">miformula</h1>
+				</a>
+				<button class="navbar-close">
+					<svg class="h-6 w-6 text-white cursor-pointer hover:text-primary focus:font-bold focus:text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+			<div>
+				<ul>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-white hover:bg-red-50 hover:text-primary rounded" href="#">Home</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-white hover:bg-red-50 hover:text-primary rounded" href="#schedule">Schedule</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-white hover:bg-red-50 hover:text-primary rounded" href="#standings">Standings</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+    </header>
+
+
+    <div class="flex md:flex-row flex-col bg-black welcome-hero md:px-24 lg:px-36 py-16 md:justify-evenly justify-center">
+        <div class="flex items-center">
+            <div class="welcome-content flex flex-col gap-2 rounded md:w-96 w-full text-justify">
+                <h1 class="md:text-2xl font-semibold text-white">MIFormula</h1>
+                <p class="text-white">
+                    Embrace the thrill of a new season filled with anticipation as Formula 1 returns with speed and suspense. Each race weekend unfolds as a stage for track heroes, showcasing epic actions and brilliant strategies.
+                </p>
+                <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-white hover:text-primary transition-all font-semibold">Show Info</button>
+            </div>
+        </div>
+        <div class="flex items-center justify-center w-screen rounded-full welcome-image ">
+            <img src="assets/MiLogoFix.png" alt="" class="flex justify-center" />
+        </div>
+    </div>
+    <div class="flex flex-col" id="schedule">
+        <h1 class="flex w-full pt-4 justify-center font-bold text-3xl text-white">Schedule</h1>
+        <div class="flex pt-8 mb-3">
+    <div class="relative text-primary flex items-center">
+        <button onclick="leftScroll()">
+            <i class="fa-solid fa-angles-left text-3xl"></i>
+        </button>
+    </div>
+    <div class="pl-2 pr-64 flex overflow-x-auto card-schedule">
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/bahrain/bahrain.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">BAH</h1>
+                        <p class="font-semibold text-xl">29</p>
+                        <p>Feb</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/bahrain/bahrain.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Bahrain</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Bahrain Grand Prix 2024</p>
+                        <p class="text-sm font-thin">29 February 2024 - 2 March 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Thursday 18:30 - 19:30</p>
+                            <p>Free Practice 2 : Thursday 22:00 - 23:00</p>
+                            <p>Free Practice 3 : Friday 19:30 - 20:30</p>
+                            <p>Qualification : Friday 23:00 - 00:00</p>
+                            <p>Race : Saturday 22:00 - 00:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/saudi-arabia/saudi-arabia.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">KSA</h1>
+                        <p class="font-semibold text-xl">7</p>
+                        <p>Mar</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/saudi-arabia/saudi-arabia.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Saudi Arabia</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Saudi Arabia Grand Prix 2024</p>
+                        <p class="text-sm font-thin">7 March 2024 - 9 March 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Thursday 20:30 - 21:30</p>
+                            <p>Free Practice 2 : Thursday 00:00 - 01:00</p>
+                            <p>Free Practice 3 : Friday 20:30 - 21:30</p>
+                            <p>Qualification : Friday 00:00 - 01:00</p>
+                            <p>Race : Saturday 00:00 - 02:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/australia/flag.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">AUS</h1>
+                        <p class="font-semibold text-xl">22</p>
+                        <p>Mar</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/australia/flag.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Australia</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Australia Grand Prix 2024</p>
+                        <p class="text-sm font-thin">22 March 2024 - 24 March 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 08:30 - 09:30</p>
+                            <p>Free Practice 2 : Friday 12:00 - 13:00</p>
+                            <p>Free Practice 3 : Saturday 08:30 - 09:300</p>
+                            <p>Qualification : Saturday 12:00 - 13:00</p>
+                            <p>Race : Sunday 11:00 - 13:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/japan/japan (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">JPN</h1>
+                        <p class="font-semibold text-xl">5</p>
+                        <p>Apr</p>
+                    </div>
+                </div>
+                    <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:hidden">
+                        <div class="flex gap-2 justify-center items-center">
+                            <img src="assets/flags/japan/japan (1).png" alt="" class="icon-flags" />
+                            <h1 class="font-bold text-lg">Japan</h1>
+                        </div>
+                        <div class="flex flex-col justify-center items-center gap-2">
+                            <p class="font-semibold">Formula 1 Japan Grand Prix 2024</p>
+                            <p class="text-sm font-thin">5 April 2024 - 7 April 2024</h5>
+                            <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                                <p>Free Practice 1 : Friday 09:30 - 10:30</p>
+                                <p>Free Practice 2 : Friday 13:00 - 14:00</p>
+                                <p>Free Practice 3 : Saturday 09:30 - 10:30</p>
+                                <p>Qualification : Saturday 13:00 - 14:00</p>
+                                <p>Race : Sunday 12:00 - 14:00</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <!-- <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/china/china (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">CHN</h1>
+                        <p class="font-semibold text-xl">19</p>
+                        <p>Apr</p>
+                    </div>
+                </div> -->
+                <div class="bg-black p-7 h-72 rounded-md text-white">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/china/china (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">China</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 China Grand Prix 2024</p>
+                        <p class="text-sm font-thin">19 April 2024 - 21 April 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 10:30 - 11:30</p>
+                            <p>Sprint Shoutout : Friday 14:30 - 15:15</p>
+                            <p>Sprint Race : Saturday 10:00 - 11:00</p>
+                            <p>Qualification : Saturday 14:00 - 15:00</p>
+                            <p>Race : Sunday 14:00 - 16:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/usa/united-states-of-america.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">MIA</h1>
+                        <p class="font-semibold text-xl">3</p>
+                        <p>May</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/usa/united-states-of-america.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Miami</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Miami Grand Prix 2024</p>
+                        <p class="text-sm font-thin">3 May 2024 - 5 May 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 23:30 - 00:30</p>
+                            <p>Sprint Shoutout : Friday 03:30 - 04:15</p>
+                            <p>Sprint Race : Saturday 23:00 - 00:00</p>
+                            <p>Qualification : Saturday 03:00 - 04:00</p>
+                            <p>Race : Saturday 03:00 - 04:59</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/italy/italy (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">IMO</h1>
+                        <p class="font-semibold text-xl">17</p>
+                        <p>May</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/italy/italy (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Imola</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Imola Grand Prix 2024</p>
+                        <p class="text-sm font-thin">17 May 2024 - 19 May 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 18:30 - 19:30</p>
+                            <p>Free Practice 2 : Friday 22:00 - 23:00</p>
+                            <p>Free Practice 3 : Saturday 17:30 - 18:30</p>
+                            <p>Qualification : Saturday 21:00 - 22:00</p>
+                            <p>Race : Sunday 20:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/monaco/monaco (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">Mon</h1>
+                        <p class="font-semibold text-xl">24</p>
+                        <p>May</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/monaco/monaco (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Monaco</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Monaco Grand Prix 2024</p>
+                        <p class="text-sm font-thin">24 May 2024 - 26 May 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 18:30 - 19:30</p>
+                            <p>Free Practice 2 : Friday 22:00 - 23:00</p>
+                            <p>Free Practice 3 : Saturday 17:30 - 18:30</p>
+                            <p>Qualification : Saturday 21:00 - 22:00</p>
+                            <p>Race : Sunday 20:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/canada/canada.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">Can</h1>
+                        <p class="font-semibold text-xl">7</p>
+                        <p>Jun</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/canada/canada.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Canada</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Canada Grand Prix 2024</p>
+                        <p class="text-sm font-thin">7 June 2024 - 9 June 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 00:30 - 01:30</p>
+                            <p>Free Practice 2 : Friday 04:00 - 05:00</p>
+                            <p>Free Practice 3 : Saturday 23:30 - 00:30</p>
+                            <p>Qualification : Saturday 03:00 - 04:00</p>
+                            <p>Race : Sunday 01:00 - 03:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/spain/flag (6).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">ESP</h1>
+                        <p class="font-semibold text-xl">29</p>
+                        <p>Feb</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/spain/flag (6).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Spain</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Spain Grand Prix 2024</p>
+                        <p class="text-sm font-thin">21 June 2024 - 23 June 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 18:30 - 19:30</p>
+                            <p>Free Practice 2 : Friday 22:00 - 23:00</p>
+                            <p>Free Practice 3 : Saturday 17:30 - 18:30</p>
+                            <p>Qualification : Saturday 21:00 - 22:00</p>
+                            <p>Race : Sunday 20:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/austria/austria (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">Aut</h1>
+                        <p class="font-semibold text-xl">28</p>
+                        <p>Jun</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/austria/austria (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Austria</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Austria Grand Prix 2024</p>
+                        <p class="text-sm font-thin">28 June 2024 - 30 June 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 18:30 - 19:30</p>
+                            <p>Sprint Shoutout : Friday 22:00 - 23:00</p>
+                            <p>Sprint Race : Saturday: 17:00 - 18:00</p>
+                            <p>Qualification : Saturday 21:00 - 22:00</p>
+                            <p>Race : Sunday 20:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/british/united-kingdom (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">GBR</h1>
+                        <p class="font-semibold text-xl">5</p>
+                        <p>Jul</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/british/united-kingdom (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">British</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 British Grand Prix 2024</p>
+                        <p class="text-sm font-thin">5 July 2024 - 7 July 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 18:30 - 19:30</p>
+                            <p>Free Practice 2 : Friday 22:00 - 23:00</p>
+                            <p>Free Practice 3 : Saturday 17:30 - 18:30</p>
+                            <p>Qualification : Saturday 21:00 - 22:00</p>
+                            <p>Race : Sunday 21:00 - 23:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/hungari/hungary (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">HUN</h1>
+                        <p class="font-semibold text-xl">19</p>
+                        <p>Jul</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/hungari/hungary (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Hungary</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Hungary Grand Prix 2024</p>
+                        <p class="text-sm font-thin">19 July 2024 - 21 July 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 18:30 - 19:30</p>
+                            <p>Free Practice 2 : Friday 22:00 - 23:00</p>
+                            <p>Free Practice 3 : Saturday 17:30 - 18:30</p>
+                            <p>Qualification : Saturday 21:00 - 22:00</p>
+                            <p>Race : Sunday 20:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/belgium/belgium.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">BEL</h1>
+                        <p class="font-semibold text-xl">26</p>
+                        <p>Jul</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/belgium/belgium.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Belgium</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Belgium Grand Prix 2024</p>
+                        <p class="text-sm font-thin">26 July 2024 - 28 July 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 18:30 - 19:30</p>
+                            <p>Free Practice 2 : Friday 22:00 - 23:00</p>
+                            <p>Free Practice 3 : Saturday 17:30 - 18:30</p>
+                            <p>Qualification : Saturday 21:00 - 22:00</p>
+                            <p>Race : Sunday 20:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/netherland/netherlands.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">NED</h1>
+                        <p class="font-semibold text-xl">23</p>
+                        <p>Aug</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/netherland/netherlands.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Netherland</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Dutch Grand Prix 2024</p>
+                        <p class="text-sm font-thin">23 August 2024 - 25 August 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 17:30 - 18:30</p>
+                            <p>Free Practice 2 : Friday 21:00 - 22:00</p>
+                            <p>Free Practice 3 : Saturday 16:30 - 17:30</p>
+                            <p>Qualification : Saturday 20:00 - 21:00</p>
+                            <p>Race : Sunday 20:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/azerbaijan/azerbaijan (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">AZE</h1>
+                        <p class="font-semibold text-xl">13</p>
+                        <p>Sep</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/azerbaijan/azerbaijan (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Azerbaijan</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Azerbaijan Grand Prix 2024</p>
+                        <p class="text-sm font-thin">13 September 2024 - 15 September 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 16:30 - 17:30</p>
+                            <p>Free Practice 2 : Friday 20:00 - 21:00</p>
+                            <p>Free Practice 3 : Saturday 15:30 - 16:30</p>
+                            <p>Qualification : Saturday 19:00 - 20:00</p>
+                            <p>Race : Sunday 18:00 - 20:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/singapore/singapore.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">SGP</h1>
+                        <p class="font-semibold text-xl">20</p>
+                        <p>Sep</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/singapore/singapore.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Singapore</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Singapore Grand Prix 2024</p>
+                        <p class="text-sm font-thin">20 September 2024 - 2 September 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 16:30 - 17:30</p>
+                            <p>Free Practice 2 : Friday 20:00 - 21:00</p>
+                            <p>Free Practice 3 : Saturday 16:30 - 17:30</p>
+                            <p>Qualification : Saturday 20:00 - 21:00</p>
+                            <p>Race : Sunday 19:00 - 21:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/usa/united-states-of-america.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">USA</h1>
+                        <p class="font-semibold text-xl">18</p>
+                        <p>Oct</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/usa/united-states-of-america.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">United States</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 United States Grand Prix 2024</p>
+                        <p class="text-sm font-thin">5 July 2024 - 7 July 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 00:30 - 01:30</p>
+                            <p>Sprint ShoutoutFriday 04:00 - 04:59</p>
+                            <p>Sprint Race : Saturday 01:00 - 02:00</p>
+                            <p>Qualification : Saturday 05:00 - 06:00</p>
+                            <p>Race : Sunday 02:00 - 04:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/mexico/flag (3).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">Mex</h1>
+                        <p class="font-semibold text-xl">25</p>
+                        <p>Oct</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/mexico/flag (3).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Mexico</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Mexico Grand Prix 2024</p>
+                        <p class="text-sm font-thin">25 October 2024 - 27 October 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 01:30 - 02:30</p>
+                            <p>Free Practice 2 : Friday 05:00 - 06:00</p>
+                            <p>Free Practice 3 : Saturday 00:30 - 01:30</p>
+                            <p>Qualification : Saturday 03:00 - 04:00</p>
+                            <p>Race : Sunday 03:00 - 05:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/brazil/flag (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">BRA</h1>
+                        <p class="font-semibold text-xl">1</p>
+                        <p>Nov</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/brazil/flag (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Brazil</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Brazil Grand Prix 2024</p>
+                        <p class="text-sm font-thin">1 November 2024 - 3 November 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 21:30 - 22:30</p>
+                            <p>Sprint Shoutout : Friday 01:00 - 02:00</p>
+                            <p>Sprint Race : Saturday 21:00 - 22:00</p>
+                            <p>Qualification : Saturday 01:00 - 02:00</p>
+                            <p>Race : Sunday 00:00 - 02:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/usa/united-states-of-america.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">LVE</h1>
+                        <p class="font-semibold text-xl">22</p>
+                        <p>Nov</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/usa/united-states-of-america.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Las Vegas</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Las Vegas Grand Prix 2024</p>
+                        <p class="text-sm font-thin">22 November 2024 - 24 November 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 11:30 - 12:30</p>
+                            <p>Free Practice 2 : Friday 15:00 - 16:00</p>
+                            <p>Free Practice 3 : Saturday 11:30 - 12:30</p>
+                            <p>Qualification : Saturday 15:00 - 16:00</p>
+                            <p>Race : Sunday 13:00 - 15:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/qatar/qatar (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">QAT</h1>
+                        <p class="font-semibold text-xl">29</p>
+                        <p>Nov</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/qatar/qatar (1).png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Qatar</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Qatar Grand Prix 2024</p>
+                        <p class="text-sm font-thin">29 November 2024 - 1 December 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 20:30 - 21:30</p>
+                            <p>Sprint Shoutout : Friday 00:00 - 01:00</p>
+                            <p>Sprint Race : Saturday 20:00 - 21:00</p>
+                            <p>Qualification : Saturday 00:00 - 01:00</p>
+                            <p>Race : Sunday 00:00 - 02:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-w-fit min-h-fit rounded-lg bg-secondary hover:bg-primary transition-all border-opacity-30 p-0.5 shadow-lg">
+            <div class="group transition-all">
+                <div class="bg-black px-7 h-72 rounded-md text-white flex group-hover:hidden">
+                    <div class="flex flex-col gap-2 items-center justify-center">
+                        <img src="assets/flags/uae/united-arab-emirates.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-2xl">UAE</h1>
+                        <p class="font-semibold text-xl">6</p>
+                        <p>Dec</p>
+                    </div>
+                </div>
+                <div class="bg-black p-7 h-72 rounded-md text-white hidden group-hover:block w-full">
+                    <div class="flex gap-2 justify-center items-center">
+                        <img src="assets/flags/uae/united-arab-emirates.png" alt="" class="icon-flags" />
+                        <h1 class="font-bold text-lg">Abu Dhabi</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <p class="font-semibold">Formula 1 Abu Dhabi Grand Prix 2024</p>
+                        <p class="text-sm font-thin">6 December 2024 - 8 December 2024</h5>
+                        <div class="pt-2 text-center md:w-full w-72 md:text-base text-sm">
+                            <p>Free Practice 1 : Friday 16:30 - 17:30</p>
+                            <p>Free Practice 2 : Friday 20:00 - 21:00</p>
+                            <p>Free Practice 3 : Saturday 17:30 - 18:30</p>
+                            <p>Qualification : Saturday 21:00 - 22:00</p>
+                            <p>Race : Sunday 20:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relative text-primary flex items-center ml-auto"> <!-- Menambahkan class ml-auto -->
+        <button onclick="scrollRight()">
+            <i class="fa-solid fa-angles-right text-3xl"></i>
+        </button>
+    </div>
+    
+</div>
+
+            <!-- Add other schedule items here -->
+        </div>
+        <div class="flex flex-col pt-4" id="standings">
+            <div class="flex w-full pt-4 justify-center font-bold text-3xl text-white">Standings</div>
+            <div class="flex w-full justify-center items-center pt-8">
+        <div class="button-container">
+            <div class="button-group">
+                <button id="driverBtn" class="bg-primary text-white py-2 px-5 rounded-lg">Driver</button>
+                <button id="constructorBtn" class="text-primary py-2 px-5 active:bg-primary rounded-lg">Constructor</button>
+            </div>
+        </div>
+    </div>
+            <div>
+                <div class="flex flex-col px-16">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+        <table
+          class="min-w-full text-left text-sm font-light text-surface bg-black text-white table-driver" id="table-driver">
+          <thead
+            class="border-b border-neutral-200 font-medium border-secondary">
+            <tr>
+              <th scope="col" class="px-6 py-4">Pos</th>
+              <th scope="col" class="px-6 py-4">Name</th>
+              <th scope="col" class="px-6 py-4">Team</th>
+              <th scope="col" class="px-6 py-4">Win</th>
+              <th scope="col" class="px-6 py-4">Podium</th>
+              <th scope="col" class="px-6 py-4">Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/netherland/netherlands (1).png" alt="" class="icon-standings" /> Max Verstappen </td>
+              <td class="whitespace-nowrap px-6 py-4">Red Bull Racing</td>
+              <td class="whitespace-nowrap px-6 py-4">3</td>
+              <td class="whitespace-nowrap px-6 py-4">3</td>
+              <td class="whitespace-nowrap px-6 py-4">77</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">2</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/mexico/flag (2).png" alt="" class="icon-standings" /> Sergio Perez </td>
+              <td class="whitespace-nowrap px-6 py-4">Red Bull Racing</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">3</td>
+              <td class="whitespace-nowrap px-6 py-4">64</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">3</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/monaco/monaco.png" alt="" class="icon-standings" /> Charles Leclerc </td>
+              <td class="whitespace-nowrap px-6 py-4">Ferrari</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">2</td>
+              <td class="whitespace-nowrap px-6 py-4">59</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">4</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/spain/flag (7).png" alt="" class="icon-standings" /> Carlos Sainz </td>
+              <td class="whitespace-nowrap px-6 py-4">Ferrari</td>
+              <td class="whitespace-nowrap px-6 py-4">1</td>
+              <td class="whitespace-nowrap px-6 py-4">3</td>
+              <td class="whitespace-nowrap px-6 py-4">55</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">5</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/british/united-kingdom.png" alt="" class="icon-standings" /> Lando Norris </td>
+              <td class="whitespace-nowrap px-6 py-4">McLaren</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">1</td>
+              <td class="whitespace-nowrap px-6 py-4">37</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">6</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/australia/australia.png" alt="" class="icon-standings" /> Oscar Piastri </td>
+              <td class="whitespace-nowrap px-6 py-4">McLaren</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">32</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">7</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/british/united-kingdom.png" alt="" class="icon-standings" /> George Russel </td>
+              <td class="whitespace-nowrap px-6 py-4">Mercedes</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">24</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">8</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/spain/flag (7).png" alt="" class="icon-standings" /> Fernando Alonso </td>
+              <td class="whitespace-nowrap px-6 py-4">Aston Martin</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">24</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">9</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/british/united-kingdom.png" alt="" class="icon-standings" /> Lewis Hamilton </td>
+              <td class="whitespace-nowrap px-6 py-4">Mercedes</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">10</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">10</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/canada/canada.png" alt="" class="icon-standings" /> Lance Stroll </td>
+              <td class="whitespace-nowrap px-6 py-4">Aston Martin</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">9</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">11</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/japan/japan.png" alt="" class="icon-standings" /> Yuki Tsunoda </td>
+              <td class="whitespace-nowrap px-6 py-4">Racing Bulls</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">7</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">12</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/british/united-kingdom.png" alt="" class="icon-standings" /> Oscar Bearman </td>
+              <td class="whitespace-nowrap px-6 py-4">Ferrari</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">6</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">13</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/germany/germany.png" alt="" class="icon-standings" /> Nico Hülkenberg </td>
+              <td class="whitespace-nowrap px-6 py-4">Haas</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">3</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">14</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/denmark/denmark.png" alt="" class="icon-standings" /> Kevin Magnussen </td>
+              <td class="whitespace-nowrap px-6 py-4">Haas</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">1</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">15</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/thailand/thailand.png" alt="" class="icon-standings" /> Alexander Albon </td>
+              <td class="whitespace-nowrap px-6 py-4">Williams</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">16</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/china/china.png" alt="" class="icon-standings" /> Guan Yu Zhou </td>
+              <td class="whitespace-nowrap px-6 py-4">Sauber</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">17</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/australia/australia.png" alt="" class="icon-standings" /> Daniel Ricciardo </td>
+              <td class="whitespace-nowrap px-6 py-4">Racing Bulls</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">18</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/france/france.png" alt="" class="icon-standings" /> Esteban Ocon </td>
+              <td class="whitespace-nowrap px-6 py-4">Alpine</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">19</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/france/france.png" alt="" class="icon-standings" /> Pierre Gasly </td>
+              <td class="whitespace-nowrap px-6 py-4">Alpine</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">20</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/finland/finland.png" alt="" class="icon-standings" /> Valtteri Bottas </td>
+              <td class="whitespace-nowrap px-6 py-4">Sauber</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">21</td>
+              <td class="whitespace-nowrap px-6 py-4 flex gap-2"><img src="assets/flags/usa/united-states.png" alt="" class="icon-standings" /> Logan Sargeant </td>
+              <td class="whitespace-nowrap px-6 py-4">Williams</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+            </tr>
+          </tbody>
+        </table>
+        <table
+          class="w-full text-left text-sm font-light text-surface bg-black text-white table-constructor hidden" id="table-constructor">
+          <thead
+            class="border-b border-neutral-200 font-medium border-secondary">
+            <tr>
+              <th scope="col" class="px-6 py-4">Pos</th>
+              <th scope="col" class="px-6 py-4">Team</th>
+              <th scope="col" class="px-6 py-4">Win</th>
+              <th scope="col" class="px-6 py-4">Podium</th>
+              <th scope="col" class="px-6 py-4">Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">1</td>
+              <td class="whitespace-nowrap px-6 py-4">Red Bull Racing Honda RBPT</td>
+              <td class="whitespace-nowrap px-6 py-4">3</td>
+              <td class="whitespace-nowrap px-6 py-4">6</td>
+              <td class="whitespace-nowrap px-6 py-4">141</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">2</td>
+              <td class="whitespace-nowrap px-6 py-4">Ferrari</td>
+              <td class="whitespace-nowrap px-6 py-4">1</td>
+              <td class="whitespace-nowrap px-6 py-4">5</td>
+              <td class="whitespace-nowrap px-6 py-4">120</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">3</td>
+              <td class="whitespace-nowrap px-6 py-4">McLaren Mercedes</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">1</td>
+              <td class="whitespace-nowrap px-6 py-4">69</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">4</td>
+              <td class="whitespace-nowrap px-6 py-4">Mercedes</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">34</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">5</td>
+              <td class="whitespace-nowrap px-6 py-4">Aston Martin Aramco Mercedes</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">33</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">6</td>
+              <td class="whitespace-nowrap px-6 py-4">RB Honda RBPT</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">7</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">7</td>
+              <td class="whitespace-nowrap px-6 py-4">Haas Ferrari</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">4</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">8</td>
+              <td class="whitespace-nowrap px-6 py-4">Williams Mercedes</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">9</td>
+              <td class="whitespace-nowrap px-6 py-4">Kick Sauber Ferrari</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+            </tr>
+            <tr class="border-b border-neutral-200 border-secondary">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">10</td>
+              <td class="whitespace-nowrap px-6 py-4">Alpine Renault</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+              <td class="whitespace-nowrap px-6 py-4">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        const driverBtn = document.getElementById("driverBtn");
+        const constructorBtn = document.getElementById("constructorBtn");
+        const driverTable = document.getElementById("table-driver");
+        const constructorTable = document.getElementById("table-constructor");
+
+        driverBtn.addEventListener("click", function() {
+            driverBtn.classList.add("bg-primary", "text-white");
+            constructorTable.classList.add('hidden')
+            constructorTable.classList.remove('inline-block')
+            driverTable.classList.remove('hidden')
+            driverBtn.classList.remove("text-primary");
+            constructorBtn.classList.remove("bg-primary", "text-white");
+            constructorBtn.classList.add("text-primary");
+        });
+
+        constructorBtn.addEventListener("click", function() {
+            constructorBtn.classList.add("bg-primary", "text-white");
+            driverTable.classList.remove("inline-block")
+            driverTable.classList.add("hidden")
+            constructorTable.classList.remove("hidden");
+            constructorBtn.classList.remove("text-primary");
+            driverBtn.classList.remove("bg-primary", "text-white");
+            driverBtn.classList.add("text-primary");
+        });
+
+    const leftScroll = () => {
+  const left = document.querySelector('.card-schedule');
+  left.scrollBy(-150, 0); // Menggulir ke kiri dengan parameter negatif
+};
+
+const scrollRight = () => {
+  const right = document.querySelector('.card-schedule');
+  right.scrollBy(150, 0); // Menggulir ke kanan dengan parameter positif
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    // open
+    const burger = document.querySelectorAll('.navbar-burger');
+    const menu = document.querySelectorAll('.navbar-menu');
+
+    if (burger.length && menu.length) {
+        for (var i = 0; i < burger.length; i++) {
+            burger[i].addEventListener('click', function() {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+
+    // close
+    const close = document.querySelectorAll('.navbar-close');
+    const backdrop = document.querySelectorAll('.navbar-backdrop');
+
+    if (close.length) {
+        for (var i = 0; i < close.length; i++) {
+            close[i].addEventListener('click', function() {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+
+    if (backdrop.length) {
+        for (var i = 0; i < backdrop.length; i++) {
+            backdrop[i].addEventListener('click', function() {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+});
+</script>
+</body>
+</html>
